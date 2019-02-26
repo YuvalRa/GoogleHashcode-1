@@ -57,4 +57,35 @@ public class ParseInput {
 			System.out.println();
 		}
 	}
+	
+	public ArrayList<ArrayList<Integer>> optimize(char[][] arr, int minimumIng, int max){
+
+
+        ArrayList<Point> mashroms = new ArrayList<>();
+        ArrayList<Point> tomato = new ArrayList<>();
+
+        for (int r=0; r<arr.length;r++){
+            for(int c=0;c<arr[0].length; c++){
+                if (arr[r][c] == 'M'){
+                    mashroms.add(new Point(r,c));
+                }else {
+                    tomato.add(new Point(r,c));
+                }
+            }
+        }
+        char mainIng;
+        if(mashroms.size() > tomato.size()){
+            mainIng = 'M';
+        }else {
+            mainIng= 'T';
+        }
+        boolean[][] hasTaken;
+
+
+
+
+    }
+
+	
+	
 }
