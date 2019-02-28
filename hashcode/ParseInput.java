@@ -176,5 +176,50 @@ public class ParseInput {
 		return topImage;
 	}
 
+	
+	public static SpecialImage[] getImgsWithTags(ArrayList<String> tagsToFind, SpecialImage[] imgs) {
+        final int MOST_COMMON = 1;
+        final int MOST_RARE = 2;
+        String[] commonTags = new String[MOST_COMMON];
+        String[] rareTags = new String[MOST_RARE];
+
+        for (int i = 0; i < MOST_COMMON; i++) {
+            commonTags[i] = tagsToFind.get(i);
+        }
+
+        for (int i = 0; i < MOST_RARE; i++) {
+            rareTags[i] = tagsToFind.get(tagsToFind.size()-i-1);
+        }
+
+        ArrayList<SpecialImage> wantedImages = new ArrayList<>();
+        for (SpecialImage image : imgs) {
+            int counter = 0;
+            for (String tag : commonTags) {
+                if (image.tags.contains(tag)) {
+                    counter++;
+                }
+            }
+            if (counter == commonTags.length) {
+                wantedImages.add(image);
+            }
+        }
+
+        for (int i = 0; i < wantedImages.size(); i++) {
+            boolean hasRare = false;
+            for (String tag : rareTags) {
+                if (wantedImages.get(i).tags.contains(tag)) {
+                    hasRare = true;
+                }
+            }
+            if (!hasRare) {
+                wantedImages.remove(i);
+                i--;
+            }
+        }
+
+        SpecialImage[] returnedImgs = new SpecialImage[wantedImages.size()];
+        returnedImgs = wantedImages.toArray(returnedImgs);
+        return returnedImgs;
+    }
 
 }
