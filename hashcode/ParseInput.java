@@ -16,7 +16,7 @@ public class ParseInput {
 
 	static int N;
 	static SpecialImage[] allPhotos;
-	static List<List<Integer>> solution = new ArrayList<>();
+	static List<int[]> solution = new ArrayList<>();
 	static List<SpecialImage> verticals = new ArrayList<>();
 	static List<SpecialImage> horizontals = new ArrayList<>();
 
@@ -87,11 +87,14 @@ public class ParseInput {
 
 			writer.write(solution.size());
 			for (int i = 0; i < solution.size(); i++) {
-				for (Integer pic : solution.get(i)) {
-					writer.write(pic + " ");
-//					System.out.print(pic + " ");
+				int[] slide = solution.get(i);
+				if (slide.length == 1) {
+					writer.write(slide[0]+"\n");
 				}
-				writer.newLine();
+				else {
+					writer.write(slide[0] + " " + slide[1] +"\n");
+				}
+//					System.out.print(pic + " ");
 //				System.out.println();
 			}
 			writer.close();
