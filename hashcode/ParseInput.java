@@ -177,7 +177,7 @@ public class ParseInput {
 	}
 
 	
-	public static SpecialImage[] getImgsWithTags(ArrayList<String> tagsToFind, SpecialImage[] imgs) {
+    public static SpecialImage[] getImgsWithTags(ArrayList<String> tagsToFind, SpecialImage[] imgs) {
         final int MOST_COMMON = 1;
         final int MOST_RARE = 2;
         String[] commonTags = new String[MOST_COMMON];
@@ -221,5 +221,6 @@ public class ParseInput {
         returnedImgs = wantedImages.toArray(returnedImgs);
         return returnedImgs;
     }
+
 
 }
