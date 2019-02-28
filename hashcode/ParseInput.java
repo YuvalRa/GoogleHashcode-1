@@ -42,7 +42,7 @@ public class ParseInput {
 		        for (int i=0; i< hist.size()/2; i++) {
             SpecialImage[] imagesToNextLevel = getImgsWithTags(
                     (ArrayList<String>) hist,
-                    allPhotos,
+                    horizontals,
                     1,
                     2
             );
