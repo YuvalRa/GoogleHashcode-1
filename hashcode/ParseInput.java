@@ -90,7 +90,6 @@ public class ParseInput {
 			System.out.println();
 		}
 	}
-
 	
 	public static void printImages() {
 		for (int i = 0; i < N; i++) {
@@ -101,6 +100,4 @@ public class ParseInput {
 			System.out.println();
 		}
 	}
-
-
 }
