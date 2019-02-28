@@ -15,7 +15,11 @@ public class SpecialImage {
 
     public int commonTags (SpecialImage otherImage) {
         int counter = 0;
-        
+        for (String s : tags) {
+            if (otherImage.tags.contains(s)) {
+                counter++;
+            }
+        }
         return counter;
     }
 }
