@@ -38,6 +38,26 @@ public class ParseInput {
 			System.out.print(tag+" ");
 			System.out.println(table.get(tag).size());
 		}
+		
+		        for (int i=0; i< hist.size()/2; i++) {
+            SpecialImage[] imagesToNextLevel = getImgsWithTags(
+                    (ArrayList<String>) hist,
+                    allPhotos,
+                    1,
+                    2
+            );
+            HashMap<String, ArrayList<Integer>> newTable = lookUpTable(imagesToNextLevel);
+            List<String> newHist = histograma(newTable);
+            SpecialImage[] imagesToNextNextLevel = getImgsWithTags(
+                    (ArrayList<String>) newHist,
+                    imagesToNextLevel,
+                    2,
+                    0
+            );
+            hist.remove(0);
+            hist.remove(hist.size()-1);
+            i--;
+        }
 
 	}
 
@@ -177,17 +197,21 @@ public class ParseInput {
 	}
 
 	
-    public static SpecialImage[] getImgsWithTags(ArrayList<String> tagsToFind, SpecialImage[] imgs) {
-        final int MOST_COMMON = 1;
-        final int MOST_RARE = 2;
-        String[] commonTags = new String[MOST_COMMON];
-        String[] rareTags = new String[MOST_RARE];
+    public static SpecialImage[] getImgsWithTags(
+            ArrayList<String> tagsToFind,
+            SpecialImage[] imgs,
+            int numOfCommonToFind,
+            int numOfRareToFind
+    )  {
+        
+        String[] commonTags = new String[numOfCommonToFind];
+        String[] rareTags = new String[numOfRareToFind];
 
-        for (int i = 0; i < MOST_COMMON; i++) {
+        for (int i = 0; i < numOfCommonToFind; i++) {
             commonTags[i] = tagsToFind.get(i);
         }
 
-        for (int i = 0; i < MOST_RARE; i++) {
+        for (int i = 0; i < numOfRareToFind; i++) {
             rareTags[i] = tagsToFind.get(tagsToFind.size()-i-1);
         }
 
