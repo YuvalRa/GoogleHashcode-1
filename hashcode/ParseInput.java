@@ -39,6 +39,7 @@ public class ParseInput {
 			System.out.println(table.get(tag).size());
 		}
 		
+		SpecialImage[] imagesToNextNextLevel;
 		        for (int i=0; i< hist.size()/2; i++) {
             SpecialImage[] imagesToNextLevel = getImgsWithTags(
                     (ArrayList<String>) hist,
@@ -48,7 +49,7 @@ public class ParseInput {
             );
             HashMap<String, ArrayList<Integer>> newTable = lookUpTable(imagesToNextLevel);
             List<String> newHist = histograma(newTable);
-            SpecialImage[] imagesToNextNextLevel = getImgsWithTags(
+            imagesToNextNextLevel = getImgsWithTags(
                     (ArrayList<String>) newHist,
                     imagesToNextLevel,
                     2,
